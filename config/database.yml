@@ -9,26 +9,19 @@
 # And be sure to use new-style password hashing:
 #   http://dev.mysql.com/doc/refman/5.0/en/old-client.html
 #
-mysql: &mysql
-  adapter: mysql2
-  database: "<%=ENV['OPENSHIFT_APP_NAME']%>"
-  username: "<%=ENV['OPENSHIFT_MYSQL_DB_USERNAME']%>"
-  password: "<%=ENV['OPENSHIFT_MYSQL_DB_PASSWORD']%>"
-  host:     <%=ENV['OPENSHIFT_MYSQL_DB_HOST']%>
-  port:     <%=ENV['OPENSHIFT_MYSQL_DB_PORT']%>
 
-#default: &default
-#  adapter: mysql2
-#  encoding: utf8
-#  pool: 5
-#  #username: root
-#  username: reddingk
-#  password:
-#  host: localhost
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  #username: root
+  username: reddingk
+  password:
+  host: localhost
 
 development:
   <<: *default
-#  database: SchPs118_development
+  database: SchPs118_development
 
 development:
   adapter: mysql2
@@ -67,7 +60,19 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
+#  DATABASE_URL: "mysql://$OPENSHIFT_MYSQL_DB_HOST:$OPENSHIFT_MYSQL_DB_PORT/"
+#  database: schps118
+#  username: adminsHgyY6I
+#  password: z5_CBc_nipLI
+
+  adapter: mysql2
+  database: "<%=ENV['OPENSHIFT_APP_NAME']%>"
+  username: "<%=ENV['OPENSHIFT_MYSQL_DB_USERNAME']%>"
+  password: "<%=ENV['OPENSHIFT_MYSQL_DB_PASSWORD']%>"
+  host:     <%=ENV['OPENSHIFT_MYSQL_DB_HOST']%>
+  port:     <%=ENV['OPENSHIFT_MYSQL_DB_PORT']%>
+  
+#  <<: *default
 #  database: SchPs118_production
 #  username: SchPs118
 #  password: <%= ENV['SCHPS118_DATABASE_PASSWORD'] %>
