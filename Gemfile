@@ -44,4 +44,4 @@ group :development, :test do
 end
 
 
-gem 'rack', '1.6.0'
+#gem 'rack', '1.6.0'
