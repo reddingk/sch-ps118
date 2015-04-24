@@ -43,3 +43,5 @@ group :development, :test do
   gem 'spring'
 end
 
+
+gem 'rack', '1.6.0'
